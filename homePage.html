@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Registration Portal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            min-height: 600px;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 24px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Left Section */
+        .welcome-section {
+            background: linear-gradient(145deg, #1d4ed8, #2563eb);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-section::before,
+        .welcome-section::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .welcome-section::before {
+            width: 300px;
+            height: 300px;
+            top: -120px;
+            right: -100px;
+        }
+
+        .welcome-section::after {
+            width: 220px;
+            height: 220px;
+            bottom: -100px;
+            left: -80px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-content .tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .welcome-content h1 {
+            font-size: 48px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .welcome-content p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #dbeafe;
+            max-width: 480px;
+        }
+
+        /* Right Section */
+        .action-section {
+            color: #1e293b;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .action-section h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #0f172a;
+        }
+
+        .action-section .subtitle {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .step-number {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            background: #eff6ff;
+            color: #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .step-text h3 {
+            font-size: 15px;
+            margin-bottom: 3px;
+            color: #1e293b;
+        }
+
+        .step-text p {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* Buttons */
+        .register-btn,
+        .login-btn,
+        .admin-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 25px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        /* Registration Button */
+        .register-btn {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+        }
+
+        .register-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.35);
+        }
+
+        /* Login and Admin Buttons Container */
+        .secondary-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        /* Login Button */
+        .login-btn {
+            background: white;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+
+        .login-btn:hover {
+            background: #eff6ff;
+            transform: translateY(-2px);
+        }
+
+        /* Admin Button */
+        .admin-btn {
+            background: #0f172a;
+            color: white;
+            border: 2px solid #0f172a;
+        }
+
+        .admin-btn:hover {
+            background: #1e293b;
+            border-color: #1e293b;
+            transform: translateY(-2px);
+        }
+
+        .privacy {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 800px) {
+            .container {
+                grid-template-columns: 1fr;
+                margin: 30px 0;
+            }
+
+            .welcome-section {
+                padding: 80px 35px 50px;
+                min-height: 380px;
+            }
+
+            .welcome-content h1 {
+                font-size: 38px;
+            }
+
+            .action-section {
+                padding: 45px 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 94%;
+                border-radius: 18px;
+            }
+
+            .welcome-section {
+                padding: 75px 25px 40px;
+            }
+
+            .action-section {
+                padding: 35px 25px;
+            }
+
+            .welcome-content h1 {
+                font-size: 32px;
+            }
+
+            .action-section h2 {
+                font-size: 27px;
+            }
+
+            .secondary-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+
+            <div class="logo">
+                KITB
+            </div>
+
+            <div class="welcome-content">
+                <span class="tag">REGISTRATION PORTAL</span>
+
+                <h1>
+                    Welcome to Our Registration Portal
+                </h1>
+
+                <p>
+                    We're happy to have you here. Register your account
+                    and take the first step toward accessing our services
+                    and features.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- Action Section -->
+        <section class="action-section">
+
+            <h2>Let's Get You Started</h2>
+
+            <p class="subtitle">
+                Complete our simple registration form. It only takes a few
+                minutes to provide the information we need.
+            </p>
+
+            <div class="steps">
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <h3>Enter Your Information</h3>
+                        <p>Provide your basic personal details.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        <h3>Review Your Details</h3>
+                        <p>Make sure all information is correct.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <h3>Submit Registration</h3>
+                        <p>Submit the form to complete registration.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Registration Button -->
+            <a href="registrationForm.html" class="register-btn">
+                Proceed to Registration
+                <span>→</span>
+            </a>
+
+            <!-- Login and Admin Buttons -->
+            <div class="secondary-buttons">
+
+                <a href="login.html" class="login-btn">
+                    Login
+                    <span>→</span>
+                </a>
+
+                <a href="adminLogin.html" class="admin-btn">
+                    Admin
+                    <span>⚙</span>
+                </a>
+
+            </div>
+
+            <p class="privacy">
+                Your information is handled securely and responsibly.
+            </p>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

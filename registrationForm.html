@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create an Account | Registration Portal</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 15px;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #222;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .required {
+            color: #e53935;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d5d9dd;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            color: #333;
+            background-color: #fff;
+            transition: all 0.2s ease;
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
+        }
+
+        .button-container {
+            margin-top: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        button:hover {
+            background: #43a047;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #2563eb;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Create an Account</h1>
+            <p>Please fill in the information below to register.</p>
+        </div>
+
+        <form id="registrationForm" action="#" method="post">
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="lastName">
+                        Last Name <span class="required">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        placeholder="e.g., Bulanadi"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName">
+                        First Name <span class="required">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        placeholder="e.g., Kevin"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="middleName">Middle Name</label>
+                <input
+                    type="text"
+                    id="middleName"
+                    name="middleName"
+                    placeholder="e.g., Tuastumban"
+                >
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="birthdate">
+                        Birthdate <span class="required">*</span>
+                    </label>
+                    <input
+                        type="date"
+                        id="birthdate"
+                        name="birthdate"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="contactNumber">
+                        Contact Number <span class="required">*</span>
+                    </label>
+                    <input
+                        type="tel"
+                        id="contactNumber"
+                        name="contactNumber"
+                        placeholder="e.g., 09123456789"
+                        pattern="[0-9]{11}"
+                        maxlength="11"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="address">
+                    Full Address <span class="required">*</span>
+                </label>
+                <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="e.g., 123 Main Street, City, Province"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    Email Address <span class="required">*</span>
+                </label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="e.g., kevin.bulanadi@example.com"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">
+                    Password <span class="required">*</span>
+                </label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">
+                    Confirm Password <span class="required">*</span>
+                </label>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm your password"
+                    required
+                >
+            </div>
+
+            <div class="button-container">
+                <button type="submit">Register</button>
+            </div>
+
+        </form>
+
+        <a href="homePage.html" class="back-link">
+            ← Back to Home
+        </a>
+
+        <div class="footer">
+            <p>© 2026 Registration System. All rights reserved.</p>
+        </div>
+
+    </div>
+
+    <script>
+        const form = document.getElementById("registrationForm");
+        const birthdate = document.getElementById("birthdate");
+
+        // Prevent selecting a future birthdate
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const day = String(today.getDate()).padStart(2, "0");
+
+        birthdate.max = `${year}-${month}-${day}`;
+
+        form.addEventListener("submit", function(event) {
+            const birthDateValue = birthdate.value;
+
+            if (!birthDateValue) {
+                return;
+            }
+
+            const birthDate = new Date(birthDateValue);
+            const currentDate = new Date();
+
+            let age = currentDate.getFullYear() - birthDate.getFullYear();
+
+            const monthDifference =
+                currentDate.getMonth() - birthDate.getMonth();
+
+            // Subtract one year if the birthday hasn't happened yet this year
+            if (
+                monthDifference < 0 ||
+                (monthDifference === 0 &&
+                 currentDate.getDate() < birthDate.getDate())
+            ) {
+                age--;
+            }
+
+            // Check if user is below 18
+            if (age < 18) {
+                event.preventDefault();
+
+                alert(
+                    "Registration Not Allowed\n\n" +
+                    "Sorry, you must be at least 18 years old to register."
+                );
+
+                birthdate.focus();
+            } else {
+                alert(
+                    "Registration Successful\n\n" +
+                    "Thank you for registering!"
+                );
+            }
+        });
+    </script>
+
+    <script>
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+
+        function validatePassword() {
+        
+        if (password.value !== confirmPassword.value) {
+            // Sets a custom browser validation message and blocks form submission
+            confirmPassword.setCustomValidity("Passwords Don't Match");
+        } else {
+            // Clears the error, making the form valid again
+            confirmPassword.setCustomValidity("");
+        }
+        }
+
+        // Run the function whenever the user types or leaves the fields
+        password.onchange = validatePassword;
+        confirmPassword.onkeyup = validatePassword;
+    </script>
+
+</body>
+</html>
